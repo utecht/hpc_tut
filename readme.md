@@ -7,21 +7,21 @@ Logging In
 ssh <username>@login.hpc.uams.edu
 ```
 
-If this is your first time logging into the system, now is when you should remember to change your password.
+If this is your first time logging into the system, now is when you should change your password.
 
 ```bash
 passwd
 ```
 
-You are now on the HPC login node. From here you can stage your data and jobs to be submitted to the actual computational nodes in the cluster. You can view the current load of the overall system from the login node with the `showstate` command.
+You are now on the HPC login node. From here you can stage your data and jobs to be submitted to the computational nodes in the cluster. You can view the current load of the overall system from the login node with the `showstate` command.
 
 Submit a Simple Job
 ------------
-While the login node is a relatively powerful server, it should not be used to do any actual work, as that could impede others ability to use the system. We use [Torque](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm) to manage jobs and resources on the cluster. The `qsub` program will be your primary interface to submitting jobs to the cluster. In its simplest form you can feed it a command on standard input and it will schedule and run a job. Here we will schedule a single command `lscpu` to run using all of the defaults.
+While the login node is a relatively powerful server, it should not be used to do any actual work, as that could impede others ability to use the system. We use [Torque](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm) to manage jobs and resources on the cluster. The `qsub` program will be your primary interface for submitting jobs to the cluster. In its simplest form you can feed it a command on standard input and it will schedule and run a job. Here we will schedule a single command `lscpu` to run using all of the defaults.
 ```bash
 echo lscpu | qsub
 ```
-The output from jobs will end up in your home directory as they run. Since we didn't name the job we just submitted you will find a file called STDIN.o<JOBID>, which will contain the standard output of the lscpu command once it has finished running on the node it was assigned.
+The output from jobs will end up in your home directory as they run. Since we didn't name the job we just submitted you will find a file called STDIN.o##JOBID##, which will contain the standard output of the lscpu command once it has finished running on the node it was assigned.
 ```bash
 less STDIN.o########
 ```
