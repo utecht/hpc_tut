@@ -83,7 +83,7 @@ pdsh -w <nodename> top -b -n1
 
 Installing Software
 -------------------
-The HPC has some software packages already installed, however they will need to be activated using [Lmod](http://lmod.readthedocs.org). You can browse avaliable modules and search them with these commands.
+The HPC has some software packages already installed, however they will need to be activated using [Lmod](http://lmod.readthedocs.org). You can browse avaliable modules or search for them and see descriptions with these commands.
 ```bash
 module avail
 module spider <search>
