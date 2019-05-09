@@ -88,7 +88,7 @@ The HPC has some software packages already installed, however they will need to 
 module avail
 module spider <search>
 ```
-If one of them is already available you simple need to load it. Do note however, that this is only changing your local environment variables. If you plan on making use of anything inside of a module during a job, you must use `module load` in the job script, before you try and use the commands that it enables.
+If one of them is already available you simply need to load it. Do note however, that this is only changing your local environment variables. If you plan on making use of anything inside of a module during a job, you must use `module load` in the job script, before you try and use the commands that it enables.
 ```bash
 module load <module_name>
 ```
@@ -104,12 +104,12 @@ conda --version
 
 Submit a Multistage Job
 -----------------------
-This git repository serves as an example of many of the steps involved in submitting a more complex job. To begin clone this git repository into your home directory on the HPC.
+This git repository serves as an example of many of the steps involved in submitting a more complex job. To begin, clone this git repository into your home directory on the HPC.
 ```bash
 git clone https://github.com/utecht/hpc_tut
 cd hpc_tut
 ```
-To find a non-trivial amount of work to do, this example will follow the [Moving Pictures tutorial](https://docs.qiime2.org/2019.4/tutorials/moving-pictures/) of the QIIME2 microbiome toolset. This will require installing and setting up the QIIME tool on the HPC. To accomplish this we will use EasyBuild and a set of EasyBuild scripts found on their online repository. https://github.com/easybuilders/easybuild-easyconfigs
+To find a non-trivial amount of work to do, this example will follow the [Moving Pictures tutorial](https://docs.qiime2.org/2019.4/tutorials/moving-pictures/) of the QIIME2 microbiome toolset. This will require installing and setting up the QIIME2 tool on the HPC. To accomplish this we will use EasyBuild and a set of EasyBuild scripts found on their online repository. https://github.com/easybuilders/easybuild-easyconfigs
 ```bash
 cd dependencies
 module load EasyBuild
@@ -117,7 +117,7 @@ eb Miniconda3-4.4.10.eb
 eb QIIME2-2019.1.eb
 cd ..
 ```
-Now on the login node we can ensure that the QIIME2 tool has installed properly.  If loading the module fails, read the output from module for advice on how to proceed.
+Now, while on the login node, we can ensure that the QIIME2 tool has installed properly.  If loading the module fails, read the output from `module` for advice on how to proceed.
 ```bash
 module avail
 module load QIIME2
@@ -128,13 +128,13 @@ Next we need to download the sample data for the tutorial and edit the step scri
 ./initialize.sh
 ```
 
-Now that the data is in place and the module has been installed it is time to submit the actual work to the job queue and wait for the emails to roll in. The Moving Pictures tutorial has roughly 20 QIIME commands to run which produce various outputs.  Some of these commands are quite intense and others will rely on their output before they can run. On the HPC there is a set cost to spinning up a job on a node and so often you will want to chain many commands together rather than submitting a job for each command that needs to be run.  For the Moving Pictures tutorial I have broken the 20 commands into 3 sections, an initial very CPU heavy import/demultiplex/align and then 2 low CPU jobs in which smaller calculations are performed with the output from the first job.  Looking at the top of the import.script with the head command you can see that it requests 1 node with 36 ppn, while the other two scripts just take the queue default of a single CPU.
+Now that the data is in place and the module has been installed it is time to submit the actual work to the job queue and wait for the emails to roll in. The Moving Pictures tutorial has roughly 20 QIIME2 commands to run which produce various outputs.  Some of these commands are quite intense and others will rely on previous output before they can run. On the HPC there is a set cost to spinning up a job on a node. Therefore often you will want to chain many commands together rather than submitting a job for each command that needs to be run.  For the Moving Pictures tutorial I have broken the 20 commands into 3 sections, an initial very CPU heavy import/demultiplex/align and then 2 low CPU jobs in which smaller calculations are performed with the output from the first job.  Looking at the top of the import.script with the `head` command you can see that it requests 1 node with 36 cpus, while the other two scripts just take the queue default of a single CPU.
  ```bash
  cd steps
  head -n20 import.script
  ```
  
- Each of these scripts could be queued just by running the qsub command, however the second two scripts cannot run until the first job has finished, the qsub command takes a `depend=afterok:<jobid>` argument, which will submit those jobs onto the queue with a hold until the first has successfully exited. The run_all.sh script shows how to schedule multiple jobs at a time while capturing their job_id to feed into later required jobs.
+ Each of these scripts could be queued just by running the qsub command. However the second two scripts cannot run until the first job has finished. The `qsub` command takes a `depend=afterok:<jobid>` argument, which will submit those jobs onto the queue with a hold until the first has successfully exited. The run_all.sh script shows how to schedule multiple jobs at a time while capturing their job_id to feed into later required jobs.
  ```bash
  cat run_all.sh
  ./run_all.sh
