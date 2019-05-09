@@ -101,7 +101,7 @@ cd ..
 ```
 
 ```bash
-./download_all.sh
+./initialize.sh
 ```
 
  ```bash
