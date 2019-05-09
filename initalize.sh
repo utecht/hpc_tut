@@ -1,7 +1,7 @@
 #!/bin/bash
 regex='\/home\/([^\/]+)\/hpc_tut'
 [[ $(pwd) =~ $regex ]]
-echo "What email would you like to be notified at?"
+echo "What email would you like to be notified?"
 read email
 echo "Changing your path to ${BASH_REMATCH[1]}"
 for f in steps/*.script; do
