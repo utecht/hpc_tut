@@ -11,29 +11,29 @@ If this is your first time logging into the system, now is when you should remem
 
 ```bash
 passwd
-`
+```
 
 
 ```bash
 showstate
-`
+```
 
 
 Submit a Simple Job
 ------------
 ```bash
 echo lscpu | qsub
-`
+```
 
 ```bash
 less STDIN.o########
-`
+```
 
 Submit a Scripted Job
 ---------------------
 ```bash
 nano cpuinfo.script
-`
+```
 
 ```bash
 #!/bin/bash
