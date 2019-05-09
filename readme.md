@@ -92,7 +92,7 @@ If one of them is already available you simple need to load it. Do note however,
 ```bash
 module load <module_name>
 ```
-One of the most useful modules is [EasyBuild](https://easybuild.readthedocs.io/en/latest/). This is build and installation framework designed for HPCs. Many scientific toolsets can be installed using it, and once they are they can be activated using the module commands above. However, EasyBuild will always have to be loaded first, before anything installed with it can be loaded, the `module spider <search>` command will explain this if you forget.
+One of the most useful modules is [EasyBuild](https://easybuild.readthedocs.io/en/latest/). This is a build and installation framework designed for HPCs. Many scientific toolsets can be installed using it, and once they are they can be activated using the module commands above. However, EasyBuild will always have to be loaded first, before anything installed with it can be loaded, the `module spider <search>` command will explain this if you forget.
 ```bash
 module load EasyBuild
 wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/master/easybuild/easyconfigs/m/Miniconda3/Miniconda3-4.5.12.eb
