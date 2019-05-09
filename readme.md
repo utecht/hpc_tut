@@ -17,7 +17,7 @@ You are now on the HPC login node. From here you can stage your data and jobs to
 
 Submit a Simple Job
 ------------
-While the login node is a relatively powerful server, it should not be used to do any actual work, as that could impede others ability to use the system. We use (Torque)[http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm] to manage jobs and resources on the cluster. The `qsub` program will be your primary interface to submitting jobs to the cluster. In its simplest form you can feed it a command on standard input and it will schedule and run a job. Here we will schedule a single command `lscpu` to run using all of the defaults.
+While the login node is a relatively powerful server, it should not be used to do any actual work, as that could impede others ability to use the system. We use [Torque](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm) to manage jobs and resources on the cluster. The `qsub` program will be your primary interface to submitting jobs to the cluster. In its simplest form you can feed it a command on standard input and it will schedule and run a job. Here we will schedule a single command `lscpu` to run using all of the defaults.
 ```bash
 echo lscpu | qsub
 ```
@@ -28,7 +28,7 @@ less STDIN.o########
 
 Submit a Scripted Job
 ---------------------
-The `qsub` program takes (many arguments)[http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm#topics/torque/commands/qsub.htm] to control where the job will be scheduled and also can be fed a script of commands and arguments to be run instead of just feeding them in through a pipe. We will now create a script which will both contain the arguments and actual commands to be run.
+The `qsub` program takes [many arguments](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm#topics/torque/commands/qsub.htm) to control where the job will be scheduled and also can be fed a script of commands and arguments to be run instead of just feeding them in through a pipe. We will now create a script which will both contain the arguments and actual commands to be run.
 ```bash
 nano cpuinfo.script
 ```
@@ -83,7 +83,7 @@ pdsh -w <nodename> top -b -n1
 
 Installing Software
 -------------------
-The HPC has some software packages already installed, however they will need to be activated using (Lmod)[http://lmod.readthedocs.org]. You can browse avaliable modules and search them with these commands.
+The HPC has some software packages already installed, however they will need to be activated using [Lmod](http://lmod.readthedocs.org). You can browse avaliable modules and search them with these commands.
 ```bash
 module avail
 module spider <search>
@@ -92,7 +92,7 @@ If one of them is already available you simple need to load it. Do note however,
 ```bash
 module load <module_name>
 ```
-One of the most useful modules is EasyBuild. This is build and installation framework designed for HPCs. Many scientific toolsets can be installed using it, and once they are they can be activated using the module commands above. However, EasyBuild will always have to be loaded first, before anything installed with it can be loaded, the `module spider <search>` command will explain this if you forget.
+One of the most useful modules is [EasyBuild](https://easybuild.readthedocs.io/en/latest/). This is build and installation framework designed for HPCs. Many scientific toolsets can be installed using it, and once they are they can be activated using the module commands above. However, EasyBuild will always have to be loaded first, before anything installed with it can be loaded, the `module spider <search>` command will explain this if you forget.
 ```bash
 module load EasyBuild
 wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/master/easybuild/easyconfigs/m/Miniconda3/Miniconda3-4.5.12.eb
