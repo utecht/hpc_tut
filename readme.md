@@ -91,7 +91,7 @@ This git repository serves as an example of many of the steps involved in submit
 git clone https://github.com/utecht/hpc_tut
 cd hpc_tut
 ```
-To find a non-trivial amount of work to do this example will follow the [Moving Pictures tutorial](https://docs.qiime2.org/2019.1/tutorials/moving-pictures/) of the QIIME2 microbiome toolset. This will require installing and setting up the QIIME tool on the HPC. To accomplish this we will use EasyBuild and a set of EasyBuild scripts found on their online repository. https://github.com/easybuilders/easybuild-easyconfigs
+To find a non-trivial amount of work to do, this example will follow the [Moving Pictures tutorial](https://docs.qiime2.org/2019.4/tutorials/moving-pictures/) of the QIIME2 microbiome toolset. This will require installing and setting up the QIIME tool on the HPC. To accomplish this we will use EasyBuild and a set of EasyBuild scripts found on their online repository. https://github.com/easybuilders/easybuild-easyconfigs
 ```bash
 cd dependencies
 module load EasyBuild
@@ -122,10 +122,11 @@ Now that the data is in place and the module has been installed it is time to su
  ./run_all.sh
  ```
  
- Now you can sit back and wait for the emails to come pouring in.  The first step takes roughly 10 minutes to complete and the later ones about half as long each, although they will run at the same time. Use the commands from the "Monitoring Jobs" section about to watch their progress.
+ Now you can sit back and wait for the emails to come pouring in.  The first step takes roughly 10 minutes to complete and the later ones about half as long each, although they will run at the same time. Use the commands from the "Monitoring Jobs" section above to watch their progress.
 
 Once all of the jobs have finished it is time to pack up your results and scp them back to your local machine to analyse the various visualizations and result tables.
 ```bash
+cd ..
 tar cfz results.tar.gz results/
 exit
 scp <username>@login.hpc.uams.edu:hpc_tut/results.tar.gz .
