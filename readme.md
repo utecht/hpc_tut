@@ -99,6 +99,7 @@ wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/master
 eb Miniconda3-4.5.12.eb
 module avail
 module load Miniconda3
+conda --version
 ```
 
 Submit a Multistage Job
