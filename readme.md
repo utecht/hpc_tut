@@ -28,7 +28,7 @@ less STDIN.o########
 
 Submit a Scripted Job
 ---------------------
-The `qsub` program takes [many arguments](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm#topics/torque/commands/qsub.htm) to control where the job will be scheduled and also can be fed a script of commands and arguments to be run instead of just feeding them in through a pipe. We will now create a script which will both contain the arguments and actual commands to be run.
+The `qsub` program takes [many arguments](http://docs.adaptivecomputing.com/torque/6-1-2/adminGuide/torque.htm#topics/torque/commands/qsub.htm) to control where the job will be scheduled and can be fed a script of commands and arguments to be run instead of just feeding them in through a pipe. We will now create a script which will both contain the arguments and actual commands to be run.
 ```bash
 nano cpuinfo.script
 ```
