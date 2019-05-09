@@ -4,9 +4,9 @@ regex='\/home\/([^\/]+)\/hpc_tut'
 echo "What email would you like to be notified at?"
 read email
 echo "Changing your path to ${BASH_REMATCH[1]}"
-for f in steps/*.step; do
-  sed -i 's/<PATH>/${BASH_REMATCH[1]}/g' $f
-  sed -i 's/<EMAIL>/$email/g' $f
+for f in steps/*.script; do
+  sed -i "s/<PATH>/${BASH_REMATCH[1]}/g" $f
+  sed -i "s/<EMAIL>/$email/g" $f
 done
 echo "Downloading Sample Data"
 wget -O data/sample-metadata.tsv https://data.qiime2.org/2019.4/tutorials/moving-pictures/sample_metadata.tsv
