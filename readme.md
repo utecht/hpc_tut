@@ -97,6 +97,7 @@ One of the most useful modules is [EasyBuild](https://easybuild.readthedocs.io/e
 module load EasyBuild
 wget https://raw.githubusercontent.com/easybuilders/easybuild-easyconfigs/master/easybuild/easyconfigs/m/Miniconda3/Miniconda3-4.5.12.eb
 eb Miniconda3-4.5.12.eb
+module avail
 module load Miniconda3
 ```
 
