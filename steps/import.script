@@ -1,10 +1,10 @@
 #!/bin/bash
 #PBS -k o
-#PBS -M jutecht@uams.edu
+#PBS -M <EMAIL>
 #PBS -m abe
 #PHS -N qiime_import
 #PBS -j oe
-#PBS -d /home/jutecht/hpc_tut/results/
+#PBS -d /home/<PATH>/hpc_tut/results/
 #PBS -l walltime=01:00:00,nodes=1:ppn=36,feature=xeon
 
 module load EasyBuild
