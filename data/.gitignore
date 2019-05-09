@@ -1,0 +1,3 @@
+*.qza
+sample-metadata.tsv
+emp-single-end-sequences/*.fastq.gz

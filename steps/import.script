@@ -1,0 +1,47 @@
+#!/bin/bash
+#PBS -k o
+#PBS -M jutecht@uams.edu
+#PBS -m abe
+#PHS -N qiime_import
+#PBS -j oe
+#PBS -d /home/jutecht/hpc_tut/results/
+#PBS -l walltime=01:00:00,nodes=1:ppn=36,feature=xeon
+
+module load EasyBuild
+module load QIIME2
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+cp ../data/sample-metadata.tsv .
+
+qiime tools import \
+  --type EMPSingleEndSequences \
+  --input-path ../data/emp-single-end-sequences \
+  --output-path emp-single-end-sequences.qza
+
+qiime demux emp-single \
+  --i-seqs emp-single-end-sequences.qza \
+  --m-barcodes-file sample-metadata.tsv \
+  --m-barcodes-column BarcodeSequence \
+  --o-per-sample-sequences demux.qza
+
+qiime demux summarize \
+  --i-data demux.qza \
+  --o-visualization demux.qzv
+
+qiime dada2 denoise-single \
+  --p-n-threads 0 \
+  --i-demultiplexed-seqs demux.qza \
+  --p-trim-left 0 \
+  --p-trunc-len 120 \
+  --o-representative-sequences rep-seqs.qza \
+  --o-table table.qza \
+  --o-denoising-stats stats.qza
+
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --p-n-threads 0 \
+  --i-sequences rep-seqs.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
